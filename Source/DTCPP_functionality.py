@@ -8,4 +8,7 @@ import json
 def validate_request(response):
     raise Exception("Not Implemented")
 
+def initialize_game(response):
+    raise Exception("Not Implemented")
+
 
