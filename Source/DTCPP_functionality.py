@@ -11,4 +11,5 @@ def validate_request(response):
 def initialize_game(response):
     raise Exception("Not Implemented")
 
-
+def select_level(response):
+    raise Exception("Not Implemented")
