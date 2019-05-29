@@ -4,6 +4,7 @@ all the functions in one convient package
 '''
 
 import json
+pdu = ['Message','SessionId','Version','Data']
 
 '''
 validates that the Json meets the PDU
@@ -11,7 +12,14 @@ Standard.
 return a bool statement
 '''
 def validate_request(response):
-    raise Exception("Not Implemented")
+    keys = response.keys()
+    request_ok = True
+    for index in pdu:
+        if index in keys:
+            continue
+        request_ok = False
+        break
+    return request_ok
 
 '''
 initializes the game
