@@ -13,3 +13,6 @@ def initialize_game(response):
 
 def select_level(response):
     raise Exception("Not Implemented")
+
+def end_game(response):
+    raise Exception("Not Implemented")
