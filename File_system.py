@@ -19,8 +19,13 @@ def create_file():
     open(GAMES_DIRECTORY + "/" + str(GAMES_ID))
     GAMES_ID += 1
 
-def delete_file():
-    raise Exception('NotImplementedException')
+def delete_file(index_number):
+    file_exists = os.path.exists(GAMES_DIRECTORY + "/" + index_number)
+    if file_exists:
+        os.remove(GAMES_DIRECTORY + "/" + index_number,)
+        return True
+    raise FileNotFoundError(f'{index_number} does not exists')
+    
 
 def find_file():
     raise Exception('NotImplementedException')
