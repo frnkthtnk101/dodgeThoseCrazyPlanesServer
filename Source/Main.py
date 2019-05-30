@@ -8,6 +8,7 @@ import socket
 import json
 from DTCPP_functionality import *
 from File_system import check_directory
+from Classes import PDU, Message_ids
 
 #set up file system
 check_directory()
@@ -29,24 +30,24 @@ while True:
     #at any of them it will return error
     if request_ok:
         #initialize game 
-        if int(request['message']) == 0:
+        if bytes(request['message']) == Message_ids.initialize_game:
             #will send a cannot initialize game or
             #Receive session ID/ Send Session ID
             response = initialize_game(request)
         #get level
-        elif int(request['message']) == 9:
+        elif bytes(request['message']) == 9:
             #send a Receive level
             response = select_level(request)
         #bad level
-        elif int(request['message']) == 10:
+        elif bytes(request['message']) == 10:
             document_bad_level(request)
             response = select_level(request)
         #quit game
-        elif int(request['message']) == 8:
+        elif bytes(request['message']) == 8:
             #will send an OK
             response = end_game(request)
         #end game
-        elif int(request['message']) == 3:
+        elif bytes(request['message']) == 3:
             #will send an OK
             response = end_game(request)
     client_connection.sendall(response)
