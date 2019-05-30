@@ -27,5 +27,5 @@ def delete_file(index_number):
     raise FileNotFoundError(f'{index_number} does not exists')
     
 
-def find_file():
-    raise Exception('NotImplementedException')
+def find_file(index_number):
+    return os.path.exists(GAMES_DIRECTORY + "/" + index_number)
