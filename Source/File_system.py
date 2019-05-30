@@ -25,8 +25,10 @@ then Incrementes
 '''
 def create_file():
     global GAMES_ID
+    tempid = GAMES_ID
     open(GAMES_DIRECTORY + "/" + str(GAMES_ID))
     GAMES_ID += 1
+    return tempid
 
 '''
 deletes a file if the given

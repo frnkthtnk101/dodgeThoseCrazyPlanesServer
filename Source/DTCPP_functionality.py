@@ -4,6 +4,8 @@ all the functions in one convient package
 '''
 
 import json
+from File_system import create_file, delete_file
+
 pdu = ['Message','SessionId','Version','Data']
 
 '''
@@ -26,7 +28,7 @@ initializes the game
 returns a response
 '''
 def initialize_game(response):
-    raise Exception("Not Implemented")
+    
 
 '''
 selects a level on file
