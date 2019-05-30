@@ -4,6 +4,9 @@ all the functions in one convient package
 '''
 
 import json
+from File_system import create_file, delete_file
+
+pdu = ['Message','SessionId','Version','Data']
 
 '''
 validates that the Json meets the PDU
@@ -11,14 +14,21 @@ Standard.
 return a bool statement
 '''
 def validate_request(response):
-    raise Exception("Not Implemented")
+    keys = response.keys()
+    request_ok = True
+    for index in pdu:
+        if index in keys:
+            continue
+        request_ok = False
+        break
+    return request_ok
 
 '''
 initializes the game
 returns a response
 '''
 def initialize_game(response):
-    raise Exception("Not Implemented")
+    
 
 '''
 selects a level on file
