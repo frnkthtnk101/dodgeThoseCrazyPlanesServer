@@ -4,6 +4,7 @@ manipulates the file system
 for the server
 '''
 import os
+import io
 
 GAMES_DIRECTORY = '../Games'
 GAMES_ID = 0
@@ -14,7 +15,9 @@ def check_directory():
         os.mkdir(GAMES_DIRECTORY)
 
 def create_file():
-    raise Exception('NotImplementedException')
+    global GAMES_ID
+    open(GAMES_DIRECTORY + "/" + str(GAMES_ID))
+    GAMES_ID += 1
 
 def delete_file():
     raise Exception('NotImplementedException')
