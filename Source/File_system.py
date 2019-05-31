@@ -24,11 +24,18 @@ creates a file with the Games ID
 then Incrementes
 '''
 def create_file():
-    global GAMES_ID
-    tempid = GAMES_ID
-    open(GAMES_DIRECTORY + "/" + str(GAMES_ID))
-    GAMES_ID += 1
-    return tempid
+        created = True
+        data = None
+        try:
+                global GAMES_ID
+                tempid = GAMES_ID
+                t = open(GAMES_DIRECTORY + "/" + str(GAMES_ID))
+                t.close()
+                GAMES_ID += 1
+        except err:
+                created = False
+                data = {'Reason' = err}
+    return Created, tempid, data
 
 '''
 deletes a file if the given
