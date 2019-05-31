@@ -6,6 +6,8 @@ all the functions in one convient package
 import json
 from File_system import create_file, delete_file
 from Classes.PDU import PDU
+from Classes.Message_ids import Message_ids
+from Classes.File_system import File_system
 
 pdu = ['Message','SessionId','Version','Data']
 
@@ -29,8 +31,10 @@ initializes the game
 returns a response
 '''
 def initialize_game(response):
-    SessionId
-    response = pdu
+    SessionId = create_file()
+    response = PDU( Message_ids.INTIALIZE_GAME, 
+    SessionId, response['version'], None)
+    return json.loads(response)
 
 '''
 selects a level on file
