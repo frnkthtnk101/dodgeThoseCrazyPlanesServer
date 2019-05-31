@@ -15,7 +15,16 @@ GAMES_ID = 0
 returns a list of levels
 '''
 def gather_levels():
+        TempList = []
+        with open('../levels/easy1.json', 'r') as f1:
+                TempList.append(json.load(f1))
+        with open('../levels/easy2.json', 'r') as f1:
+                TempList.append(json.load(f1))
+        with open('../levels/easy3.json', 'r') as f1:
+                TempList.append(json.load(f1))
         
+
+
 
 '''
 Check if the directory exists
