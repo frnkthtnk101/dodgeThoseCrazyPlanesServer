@@ -7,6 +7,7 @@ import os
 import io
 
 GAMES_DIRECTORY = '../Games'
+LEVELS_DIRECTORY = '../levels'
 GAMES_ID = 0
 
 '''
@@ -18,6 +19,14 @@ def check_directory():
     games_directory_there = os.path.exists(GAMES_DIRECTORY)
     if games_directory_there == False:
         os.mkdir(GAMES_DIRECTORY)
+
+'''
+check if the level directory exist
+if does not, it will return false
+otherwise true
+'''
+def check_directory():
+        return os.path.exists(LEVELS_DIRECTORY)
 
 '''
 creates a file with the Games ID
