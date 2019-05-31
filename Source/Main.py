@@ -23,6 +23,7 @@ logging.info('log created')
 logging.info('checking directory')
 check_directory()
 if check_level_directory():
+    levels = gather_levels()
     #set up the server
     server_running = True
     try:
