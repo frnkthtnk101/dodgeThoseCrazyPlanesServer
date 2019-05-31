@@ -45,10 +45,10 @@ def initialize_game(request):
 selects a level on file
 returns a respone
 '''
-def select_level(request):
+def select_level(request, levels):
     valid_session_id = find_file(request["session_id"])
     if valid_session_id:
-        worked, data = generate_game(request['data'])
+        worked, data = generate_game(request['data'], levels)
         if worked:
             message = Message_ids.RECEIVE_LEVEL
         else:

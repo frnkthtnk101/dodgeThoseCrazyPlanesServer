@@ -15,13 +15,20 @@ GAMES_ID = 0
 returns a list of levels
 '''
 def gather_levels():
-        TempList = []
+        temp_list = []
         with open('../levels/easy1.json', 'r') as f1:
-                TempList.append(json.load(f1))
+                temp_list.append(json.load(f1))
         with open('../levels/easy2.json', 'r') as f1:
-                TempList.append(json.load(f1))
+                temp_list.append(json.load(f1))
         with open('../levels/easy3.json', 'r') as f1:
-                TempList.append(json.load(f1))
+                temp_list.append(json.load(f1))
+        with open('../levels/hard1.json', 'r') as f1:
+                temp_list.append(json.load(f1))
+        with open('../levels/medium1.json', 'r') as f1:
+                temp_list.append(json.load(f1))
+        with open('../levels/medium2.json', 'r') as f1:
+                temp_list.append(json.load(f1))
+        return temp_list
         
 
 

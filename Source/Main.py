@@ -60,7 +60,7 @@ if check_level_directory():
                 elif bytes(request['message']) == Message_ids.GET_LEVEL:
                     #send a Receive level
                     logging.info('getting a level')
-                    response = select_level(request)
+                    response = select_level(request, levels)
                 #bad level
                 elif bytes(request['message']) == Message_ids.BAD_LEVEL:
                     logging.warning(f'{client_address} received a bad level')
