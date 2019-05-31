@@ -29,19 +29,24 @@ def validate_request(response):
 '''
 initializes the game
 returns a response
-can send a send session ID and
+can send a Receive session id and
 Cannot initialize game
 '''
-def initialize_game(response):
+def initialize_game(request):
     created, session_id, data = create_file()
+    if created:
+        message = Message_ids.RECEIVE_SESSION_ID
+    else:
+        message = Message_ids.CANNOT_INITIALIZE_GAME
+    response = PDU(message,session_id,request['version'],data)
     return json.loads(response)
 
 ''' 
 selects a level on file
 returns a respone
 '''
-def select_level(response):
-    valid_session_id = find_file(response["session_id"])
+def select_level(request):
+    valid_session_id = find_file(request["session_id"])
     if valid_session_id:
         data = generate_game()
         message = Message_ids.RECEIVE_LEVEL
