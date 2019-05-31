@@ -12,7 +12,15 @@ from File_system import check_directory
 from Classes.Message_ids import Message_ids
 from Classes.PDU import PDU
 
+#set up the logger
+logging.basicConfig(
+    filename='../Simple.log', filemode='w',
+    format = '%(name)s - %(levelname)s - %(message)s',
+    level = logging.DEBUG
+)
+logging.info('log created')
 #set up file system
+logging.info('checking directory')
 check_directory()
 #set up the server
 HOST, PORT = '', 80
