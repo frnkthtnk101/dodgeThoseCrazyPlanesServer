@@ -32,11 +32,11 @@ def create_file():
                 t = open(GAMES_DIRECTORY + "/" + str(GAMES_ID))
                 t.close()
                 GAMES_ID += 1
-        except err:
+        except Exception as err:
                 tempid = -1
                 created = False
-                data = {'Reason' = err}
-    return Created, tempid, data
+                data = {'Reason' : err}
+        return created, tempid, data
 
 '''
 deletes a file if the given
