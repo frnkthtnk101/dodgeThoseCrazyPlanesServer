@@ -29,14 +29,14 @@ def validate_request(response):
 '''
 initializes the game
 returns a response
+can send a send session ID and
+Cannot initialize game
 '''
 def initialize_game(response):
-    session_id = create_file()
-    response = PDU( Message_ids.SEND_SESSION_ID, 
-    session_id, response['version'], None)
+    created, session_id, data = create_file()
     return json.loads(response)
 
-'''
+''' 
 selects a level on file
 returns a respone
 '''
