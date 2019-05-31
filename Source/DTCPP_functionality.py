@@ -7,7 +7,7 @@ import json
 from File_system import create_file, delete_file
 from Classes.PDU import PDU
 from Classes.Message_ids import Message_ids
-from Classes.File_system import File_system
+from File_system import *
 
 pdu = ['Message','SessionId','Version','Data']
 
@@ -31,9 +31,9 @@ initializes the game
 returns a response
 '''
 def initialize_game(response):
-    SessionId = create_file()
-    response = PDU( Message_ids.INTIALIZE_GAME, 
-    SessionId, response['version'], None)
+    session_id = create_file()
+    response = PDU( Message_ids.SEND_SESSION_ID, 
+    session_id, response['version'], None)
     return json.loads(response)
 
 '''
@@ -41,7 +41,16 @@ selects a level on file
 returns a respone
 '''
 def select_level(response):
-    raise Exception("Not Implemented")
+    valid_session_id = find_file(response["session_id"])
+    if valid_session_id:
+        data = generate_game()
+        message = Message_ids.RECEIVE_LEVEL
+    else:
+        data = {'Reason': 'bad session id.'}
+        message = Message_ids.ERROR
+    response = PDU(message,
+        response["session_id"],response['version'],
+        None)
 
 '''
 ends the current game
