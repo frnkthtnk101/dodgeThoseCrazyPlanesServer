@@ -4,10 +4,10 @@ all the functions in one convient package
 '''
 
 import json
-from File_system import create_file, delete_file
+from File_system import create_file, delete_file, find_file
 from Classes.PDU import PDU
 from Classes.Message_ids import Message_ids
-from File_system import *
+
 
 pdu = ['Message','SessionId','Version','Data']
 
@@ -48,8 +48,11 @@ returns a respone
 def select_level(request):
     valid_session_id = find_file(request["session_id"])
     if valid_session_id:
-        data = generate_game()
-        message = Message_ids.RECEIVE_LEVEL
+        worked, data = generate_game(request['data'])
+        if worked:
+            message = Message_ids.RECEIVE_LEVEL
+        else:
+            message = Message_ids.ERROR
     else:
         data = {'Reason': 'bad session id.'}
         message = Message_ids.ERROR
