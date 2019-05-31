@@ -41,35 +41,39 @@ if server_running:
     #figure out what to do
     while True:
         client_connection, client_address = listen_socket.accept()
+        logging.info(f'and connection from {client_address} received.')
         request = json.load(client_connection.recv(1024))
         request_ok = validate_request(request)
         #at any of them it will session Id
         #at any of them it will return error
+        logging.info(f'figuring out what to do with {request['message']}')
         if request_ok:
             #initialize game 
             if bytes(request['message']) == Message_ids.INTIALIZE_GAME:
                 #will send a cannot initialize game or
                 #Receive session ID/ Send Session ID
+                logging.info('intialize game')
                 response = initialize_game(request)
             #get level
             elif bytes(request['message']) == Message_ids.GET_LEVEL:
                 #send a Receive level
+                logging.info('getting a level')
                 response = select_level(request)
             #bad level
             elif bytes(request['message']) == Message_ids.BAD_LEVEL:
+                logging.warning(f'{client_address} received a bad level')
                 document_bad_level(request)
                 response = select_level(request)
             #quit game
             elif bytes(request['message']) == Message_ids.END_GAME:
                 #will send an OK
+                logging.info(f'{client_address} wants to end the game {request['SessionId']}')
                 response = end_game(request)
             #end game
             elif bytes(request['message']) == Message_ids.QUIT_GAME:
                 #will send an OK
+                logging.info(f'{client_address} wants to end the game {request['SessionId']}')
                 response = end_game(request)
+        logging.info(f'sending a response to {client_address}')
         client_connection.sendall(response)
         client_connection.close() 
-
-        print(request)
-        
-    #close
