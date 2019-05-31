@@ -48,12 +48,21 @@ def select_level(response):
     else:
         data = {'Reason': 'bad session id.'}
         message = Message_ids.ERROR
-    response = PDU(message,
-        response["session_id"],response['version'],
-        None)
+    return PDU(message, response["session_id"],
+        response['version'],data)
+
 
 '''
 ends the current game
 '''
 def end_game(response):
-    raise Exception("Not Implemented")
+    valid_session_id = find_file(response["session_id"])
+    if valid_session_id:
+        delete_file(response["session_id"])
+        message = Message_ids.OK
+        data = None
+    else:
+        data = {'Reason': 'bad session id.'}
+        message = Message_ids.ERROR
+    return PDU(message,response["session_id"],
+    response['version'], data)
