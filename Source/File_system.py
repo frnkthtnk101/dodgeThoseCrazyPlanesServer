@@ -33,6 +33,7 @@ def create_file():
                 t.close()
                 GAMES_ID += 1
         except err:
+                tempid = -1
                 created = False
                 data = {'Reason' = err}
     return Created, tempid, data
