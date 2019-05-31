@@ -6,6 +6,7 @@ the dodgeThosCrazyPlanesServer
 
 import socket
 import json
+import logging
 from DTCPP_functionality import *
 from File_system import check_directory
 from Classes.Message_ids import Message_ids
