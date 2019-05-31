@@ -222,6 +222,13 @@ $hard1 =  @{
         @{"tick" = 500; "enemies" = "downers"; "number" =2}
     )
 }
+
+$easy1 | ConvertTo-Json -Depth 25 > easy1.json
+$easy2 | ConvertTo-Json -Depth 25 > easy2.json
+$easy3 | ConvertTo-Json -Depth 25 > easy3.json
+$medium1 | ConvertTo-Json -Depth 25 > medium1.json
+$medium2 | ConvertTo-Json -Depth 25 > medium2.json
+$hard1 | ConvertTo-Json -Depth 25 > hard1.json
 <#
 	Message: 00001001
 	Session ID: 1
