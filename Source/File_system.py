@@ -5,17 +5,37 @@ for the server
 '''
 import os
 import io
+import json
 
 GAMES_DIRECTORY = '../Games'
 LEVELS_DIRECTORY = '../levels'
 GAMES_ID = 0
 
 '''
+returns a list of levels
+'''
+def gather_levels():
+        temp_list = []
+        with open('../levels/easy1.json', 'r') as f1:
+                temp_list.append(json.load(f1))
+        with open('../levels/easy2.json', 'r') as f1:
+                temp_list.append(json.load(f1))
+        with open('../levels/easy3.json', 'r') as f1:
+                temp_list.append(json.load(f1))
+        with open('../levels/hard1.json', 'r') as f1:
+                temp_list.append(json.load(f1))
+        with open('../levels/medium1.json', 'r') as f1:
+                temp_list.append(json.load(f1))
+        with open('../levels/medium2.json', 'r') as f1:
+                temp_list.append(json.load(f1))
+        return temp_list
+
+'''
 Check if the directory exists
 If it does not, then the fuction
 will create a new one
 '''
-def check_directory():
+def check_level_directory():
     games_directory_there = os.path.exists(GAMES_DIRECTORY)
     if games_directory_there == False:
         os.mkdir(GAMES_DIRECTORY)
