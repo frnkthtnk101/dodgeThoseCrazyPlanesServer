@@ -35,9 +35,12 @@ class File_systems_should (unittest.TestCase):
     findme then deletes it
     '''
     def test_should_delete_file(self):
-        t = open(HOME + GAMES_DIRECTORY + '/findme')
+        game_directory_there = os.path.exists(HOME + GAMES_DIRECTORY)
+        if game_directory_there is False:
+            check_games_directory()
+        t = open(HOME + GAMES_DIRECTORY + '/findme', 'w')
         t.close()
-        self.assertTrue('findme')
+        self.assertTrue(delete_file('findme'))
 
     '''
     checks to see if delete file
@@ -47,7 +50,8 @@ class File_systems_should (unittest.TestCase):
         file_exist = os.path.exists(HOME + GAMES_DIRECTORY + '/findme')
         if file_exist:
             os.remove(HOME+GAMES_DIRECTORY + '/findme')
-        self.assertRaises(FileNotFoundError,delete_file('findme'))
+        with self.assertRaises(FileNotFoundError):
+            delete_file('findme')
     
     '''
     just creates a file
@@ -67,10 +71,10 @@ class File_systems_should (unittest.TestCase):
     but fails
     '''
     def test_should_createfile_false(self):
-        game_directory_there = os.path.exists(HOME+GAMES_DIRECTORY)
+        game_directory_there = os.path.exists(HOME + GAMES_DIRECTORY)
         if game_directory_there:
-            shutil.rmtree(HOME+GAMES_DIRECTORY)
-        created, tempid, data = createfile()
+            shutil.rmtree(HOME + GAMES_DIRECTORY)
+        created, tempid, data = create_file()
         tempid_is_not_neg_one = tempid != -1
         data_is_none = data is None
         if tempid_is_not_neg_one or data_is_none:
