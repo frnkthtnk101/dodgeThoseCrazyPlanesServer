@@ -27,7 +27,7 @@ class File_systems_should (unittest.TestCase):
     def should_not_find_file(self):
         file_exist = os.path.exists(HOME + GAMES_DIRECTORY + '/findme')
         if file_exist:
-            os.remove(HOME + GAMES_DIRECTORY + 'findme')
+            os.remove(HOME + GAMES_DIRECTORY + '/findme')
         self.assertFalse(find_file('findme'))
     
     '''
@@ -59,7 +59,8 @@ class File_systems_should (unittest.TestCase):
         data_is_not_none = data is not None
         if tempid_is_not_zero or data_is_not_none:
             self.fail('the tempid was not 0 or data was not None')
-        self.assertTrue(created)
+        else:
+            self.assertTrue(created)
     
     '''
     trys to create a file
@@ -68,7 +69,7 @@ class File_systems_should (unittest.TestCase):
     def test_should_createfile_false(self):
         game_directory_there = os.path.exists(HOME+GAMES_DIRECTORY)
         if game_directory_there:
-            os.remove(HOME+GAMES_DIRECTORY)
+            shutil.rmtree(HOME+GAMES_DIRECTORY)
         created, tempid, data = createfile()
         tempid_is_not_neg_one = tempid != -1
         data_is_none = data is None
@@ -85,7 +86,8 @@ class File_systems_should (unittest.TestCase):
         game_directory_there = os.path.exists(HOME+GAMES_DIRECTORY)
         if game_directory_there:
             self.assertTrue(True)
-        self.fail('the games directory is not there')
+        else:
+            self.fail('the games directory is not there')
         
     
     '''
@@ -93,15 +95,15 @@ class File_systems_should (unittest.TestCase):
     ex
     '''
     def test_should_check_directory_false(self):
-        game_directory_there = os.path.exists(File_system.HOME+File_system.GAMES_DIRECTORY)
+        game_directory_there = os.path.exists(HOME + GAMES_DIRECTORY)
         if game_directory_there:
-            shutil.rmtree(File_system.HOME + File_system.GAMES_DIRECTORY)
-        File_system.check_games_directory()
-        game_directory_there = os.path.exists(File_system.HOME + File_system.GAMES_DIRECTORY)
+            shutil.rmtree(HOME + GAMES_DIRECTORY)
+        check_games_directory()
+        game_directory_there = os.path.exists(HOME + GAMES_DIRECTORY)
         if game_directory_there:
             self.assertTrue(True)
         else:
             self.fail('the games directory is not there')
 
 if __name__ == "__main__":
-    unittest.main()     
+    unittest.main()
