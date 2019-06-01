@@ -59,7 +59,19 @@ class DTCPP_functioanlity_should(unittest.TestCase):
 
     
     def test_select_level_should_return_ERROR(self):
-        raise Exception('not built yet')
+        levels = gather_levels()
+        request_level = {'Message' : Message_ids.GET_LEVEL,
+        'SessionID' : 55,
+        'Version' : bytes(56), 
+        'Data' : 
+            {
+                'Difficulty' : 'easy',
+                'PlaneTypes' : ['downers']
+            }
+        }
+        response = select_level(request_level, levels)
+        gave_error = response.message == Message_ids.ERROR
+        self.assertTrue(gave_error)
     
     def test_select_level_should_return_ERROR_2(self):
         raise Exception('not built yet')
