@@ -52,13 +52,25 @@ class File_systems_should (unittest.TestCase):
     '''
     def should_create_file_true(self):
         created, tempid, data = create_file()
-        if tempid != 0 or data is not None:
+        tempid_is_not_zero = tempid != 0 
+        data_is_not_none = data is not None
+        if tempid_is_not_zero or data_is_not_none:
             self.fail('the tempid was not 0 or data was not None')
         self.assertTrue(created)
-        
-   
+    
+    '''
+    trys to create a file
+    but fails
+    '''
     def should_createfile_false(self):
-        return True
+        os.rename('../Games','../Games1')
+        created, tempid, data = createfile()
+        os.rename('../Games1','../Games')
+        tempid_is_not_neg_one = tempid != -1
+        data_is_none = data is None
+        if tempid_is_not_neg_one or data_is_none:
+            assert.fail('the tempid was not -1 or the data was null')
+        self.assertFalse(created)
     
     def should_check_directory_true(self):
         return True
