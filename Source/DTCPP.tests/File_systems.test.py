@@ -14,7 +14,7 @@ class File_systems_should (unittest.TestCase):
     it can find it or not
     '''
     def test_should_find_file(self):
-        t = open('../Games/findme','w')
+        t = open('/Games/findme','w')
         t.close()
         self.assertTrue(File_system.find_file('findme'))
     
@@ -91,11 +91,11 @@ class File_systems_should (unittest.TestCase):
     ex
     '''
     def test_should_check_directory_false(self):
-        game_directory_there = os.path.exists('../Games')
+        game_directory_there = os.path.exists('Games')
         if game_directory_there:
-            os.remove('../Games')
+            os.remove('Games')
         File_system.check_directory()
-        game_directory_there = os.path.exists('../Games')
+        game_directory_there = os.path.exists('Games')
         if game_directory_there:
             self.assertTrue(True)
         self.fail('the games directory is not there')
