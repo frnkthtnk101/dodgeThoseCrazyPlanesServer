@@ -116,5 +116,28 @@ class File_systems_should (unittest.TestCase):
     def test_should_check_level_directory_true(self):
         self.assertTrue(check_levels_directory())
 
+    '''
+    checks the gathers levels works correctly
+    this should return 3 easy
+    2 medium
+    1 hard
+    '''
+    def test_should_gather_levels(self):
+        templist = gather_levels()
+        easy, medium, hard = 0, 0, 0
+        for record in templist:
+            if record['Difficulty'] == 'easy':
+                easy += 1
+            elif record['Difficulty'] == 'medium':
+                medium += 1
+            else record['Difficulty'] == 'hard':
+                hard += 1
+        easy_equals_three = easy == 3
+        medium_equals_two = medium == 2
+        hard_equals_one = hard == 1
+        self.assertTrue(easy_equals_three)
+        self.assertTrue(medium_equals_two)
+        self.assertTrue(hard_equals_one)
+
 if __name__ == "__main__":
     unittest.main()
