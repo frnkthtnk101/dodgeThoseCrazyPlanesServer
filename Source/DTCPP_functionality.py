@@ -40,7 +40,7 @@ def initialize_game(request):
     else:
         message = Message_ids.CANNOT_INITIALIZE_GAME
     response = PDU(message,session_id,request['version'],data)
-    return json.loads(response)
+    return response
 
 ''' 
 selects a level on file
