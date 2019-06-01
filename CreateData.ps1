@@ -224,13 +224,13 @@ $hard1 =  @{
 }
 New-Item $Home/Games -ItemType Directory -Force
 New-Item $Home/levels -ItemType Directory -Force
-$destination = $HOME+"/levels/"
-$easy1 | ConvertTo-Json -Depth 25 > $destination + easy1.json
-$easy2 | ConvertTo-Json -Depth 25 > $destination + easy2.json
-$easy3 | ConvertTo-Json -Depth 25 > $destination + easy3.json
-$medium1 | ConvertTo-Json -Depth 25 > $destination + medium1.json
-$medium2 | ConvertTo-Json -Depth 25 > $destination + medium2.json
-$hard1 | ConvertTo-Json -Depth 25 > $destination + hard1.json
+$destination = $HOME+"/levels"
+$easy1 | ConvertTo-Json -Depth 25 > "$destination/easy1.json"
+$easy2 | ConvertTo-Json -Depth 25 > "$destination/easy2.json"
+$easy3 | ConvertTo-Json -Depth 25 > "$destination/easy3.json"
+$medium1 | ConvertTo-Json -Depth 25 > "$destination/medium1.json"
+$medium2 | ConvertTo-Json -Depth 25 > "$destination/medium2.json"
+$hard1 | ConvertTo-Json -Depth 25 > "$destination/hard1.json"
 <#
 	Message: 00001001
 	Session ID: 1
