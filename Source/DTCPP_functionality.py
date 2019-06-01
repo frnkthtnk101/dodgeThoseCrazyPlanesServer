@@ -4,6 +4,7 @@ all the functions in one convient package
 '''
 
 import json
+import random
 from File_system import create_file, delete_file, find_file
 from Classes.PDU import PDU
 from Classes.Message_ids import Message_ids
@@ -56,8 +57,7 @@ def select_level(request, levels):
     else:
         data = {'Reason': 'bad session id.'}
         message = Message_ids.ERROR
-    return PDU(message, response["session_id"],
-        response['version'],data)
+    return PDU(message, request["session_id"],request['version'],data)
 
 
 '''
@@ -74,3 +74,18 @@ def end_game(response):
         message = Message_ids.ERROR
     return PDU(message,response["session_id"],
     response['version'], data)
+
+'''
+will select a game based on the data
+given, else it will return error
+'''
+def generate_game(request_parameters, levels):
+    i = 0
+    while True:
+        index = random.randrange(0,len(levels)-1)
+        same_level = request_parameters['Difficulty'] == levels[index]['Difficulty']
+        request_parameters['PlaneTypes'].sort()
+        levels[index]['PlaneTypes'].sort()
+        same_dudes = levels[index]['PlaneTypes'] == levels[index]['PlaneTypes']
+        if same_level and same_dudes:
+            return levels[index]
