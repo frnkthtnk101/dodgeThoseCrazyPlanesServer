@@ -46,10 +46,21 @@ class File_systems_should (unittest.TestCase):
             os.remove('../Games/findme')
         self.assertRaises(FileNotFoundError,File_system.delete_file('findme'))
     
+    '''
+    just creates a file
+    checks the pdu
+    '''
     def should_create_file_true(self):
-        return True
+        created, tempid, data = create_file()
+        if tempid != 0 or data is not None:
+            self.fail('the tempid was not 0 or data was not None')
+        self.assertTrue(created)
+        
+   
     def should_createfile_false(self):
         return True
+    
     def should_check_directory_true(self):
         return True
+    
     def should_check_directory_false(self):
