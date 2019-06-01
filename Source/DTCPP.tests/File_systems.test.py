@@ -27,8 +27,15 @@ class File_systems_should (unittest.TestCase):
             os.remove('../Games/findme')
         self.assertFalse(File_system.find_file('findme'))
     
+    '''
+    creates a file called
+    findme then deletes it
+    '''
     def should_delete_file(self):
-        return True
+        t = open('../Games/findme')
+        t.close()
+        self.assertTrue('findme')
+
     def should_error_on_delete_file(self):
         return True
     def should_create_file_true(self):
