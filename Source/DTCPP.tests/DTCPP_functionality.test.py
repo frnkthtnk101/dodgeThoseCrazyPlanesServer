@@ -4,7 +4,8 @@ tests the file DTCPP_functioanlity
 import unittest
 
 class DTCPP_functioanlity_should(unittest.TestCase):
-    
+    def setUp(self):
+
     def test_validate_request_should_return_true(self):
         raise Exception('not built yet')
     
