@@ -63,7 +63,7 @@ def create_file():
         try:
                 global GAMES_ID
                 tempid = GAMES_ID
-                t = open(HOME + GAMES_DIRECTORY + "/" + str(GAMES_ID))
+                t = open(HOME + GAMES_DIRECTORY + "/" + str(GAMES_ID),'w')
                 t.close()
                 GAMES_ID += 1
         except Exception as err:
