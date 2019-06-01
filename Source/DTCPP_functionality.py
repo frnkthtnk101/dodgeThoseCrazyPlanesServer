@@ -80,7 +80,6 @@ will select a game based on the data
 given, else it will return error
 '''
 def generate_game(request_parameters, levels):
-    i = 0
     while True:
         index = random.randrange(0,len(levels)-1)
         same_level = request_parameters['Difficulty'] == levels[index]['Difficulty']

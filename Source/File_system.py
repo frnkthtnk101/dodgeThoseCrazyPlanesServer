@@ -29,9 +29,6 @@ def gather_levels():
         with open('../levels/medium2.json', 'r') as f1:
                 temp_list.append(json.load(f1))
         return temp_list
-        
-
-
 
 '''
 Check if the directory exists
