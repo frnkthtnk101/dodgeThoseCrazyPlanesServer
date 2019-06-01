@@ -2,10 +2,13 @@
 tests the file DTCPP_functioanlity
 '''
 import unittest
+import os
+import shutil
 sys.path.append('/Users/francopettigrosso/ws/dodgeThoseCrazyPlanesServer/Source')
 from DTCPP_functionality import *
 from Classes.PDU import PDU 
 from Classes.Message_ids import Message_ids
+from File_system import *
 
 
 class DTCPP_functioanlity_should(unittest.TestCase):
@@ -28,7 +31,13 @@ class DTCPP_functioanlity_should(unittest.TestCase):
         self.assertTrue(is_the_response_RECEIVED)
 
     def test_initialize_game_should_return_CANNOT_INITIZE_GAME(self):
-        raise Exception('not built yet')
+        game_directory_there = os.path.exists(HOME + GAMES_DIRECTORY)
+        if game_directory_there:
+            shutil.rmtree(HOME + GAMES_DIRECTORY)
+        initialize_game_response = initialize_game(self.initialize_game)
+        check_games_directory()
+        game_could_not_be_initialized = initialize_game_response.message == Message_ids.CANNOT_INITIALIZE_GAME
+        self.assertTrue(game_could_not_be_initialized)
     
     def test_select_level_should_return_RECEIVE_LEVEL(self):
         raise Exception('not built yet')
