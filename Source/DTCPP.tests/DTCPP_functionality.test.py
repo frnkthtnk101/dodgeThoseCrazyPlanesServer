@@ -40,7 +40,23 @@ class DTCPP_functioanlity_should(unittest.TestCase):
         self.assertTrue(game_could_not_be_initialized)
     
     def test_select_level_should_return_RECEIVE_LEVEL(self):
-        raise Exception('not built yet')
+        levels = gather_levels()
+        request_initialization = initialize_game(self.validate_good)
+        request_level = {'Message' : Message_ids.GET_LEVEL,
+        'SessionID' : request_initialization.session_id,
+        'Version' : request_initialization.version, 
+        'Data' : 
+            {
+                'Difficulty' : 'easy',
+                'PlaneTypes' : ['downers']
+            }
+        }
+        response = select_level(request_level, levels)
+        same_level = request_level['Data']['Difficulty'] == response.data['Difficulty']
+        same_planes = request_level['Data']['PlaneTypes'] == response.data['PlaneTypes']
+        self.assertTrue(same_level)
+        self.assertTrue(same_planes)
+
     
     def test_select_level_should_return_ERROR(self):
         raise Exception('not built yet')
