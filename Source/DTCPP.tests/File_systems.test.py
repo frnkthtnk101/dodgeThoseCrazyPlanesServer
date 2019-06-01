@@ -14,7 +14,7 @@ class File_systems_should (unittest.TestCase):
     it can find it or not
     '''
     def test_should_find_file(self):
-        t = open('../Games/findme')
+        t = open('../Games/findme','w')
         t.close()
         self.assertTrue(File_system.find_file('findme'))
     
