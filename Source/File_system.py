@@ -40,7 +40,7 @@ Check if the directory exists
 If it does not, then the fuction
 will create a new one
 '''
-def check_level_directory():
+def check_games_directory():
     games_directory_there = os.path.exists(HOME+GAMES_DIRECTORY)
     if games_directory_there == False:
         os.mkdir(HOME+GAMES_DIRECTORY)
@@ -50,7 +50,7 @@ check if the level directory exist
 if does not, it will return false
 otherwise true
 '''
-def check_directory():
+def check_levels_directory():
         return os.path.exists(HOME+LEVELS_DIRECTORY)
 
 '''
