@@ -4,29 +4,34 @@ manipulates the file system
 for the server
 '''
 import os
+import sys
 import io
 import json
+from pathlib import Path
 
-GAMES_DIRECTORY = '../Games'
-LEVELS_DIRECTORY = '../levels'
+
+HOME = str(Path.home())
+GAMES_DIRECTORY = '/Games'
+LEVELS_DIRECTORY = '/levels'
 GAMES_ID = 0
-
+sys.path.append(HOME+GAMES_DIRECTORY)
+sys.path.append(HOME+LEVELS_DIRECTORY)
 '''
 returns a list of levels
 '''
 def gather_levels():
         temp_list = []
-        with open('../levels/easy1.json', 'r') as f1:
+        with open('easy1.json', 'r') as f1:
                 temp_list.append(json.load(f1))
-        with open('../levels/easy2.json', 'r') as f1:
+        with open('easy2.json', 'r') as f1:
                 temp_list.append(json.load(f1))
-        with open('../levels/easy3.json', 'r') as f1:
+        with open('easy3.json', 'r') as f1:
                 temp_list.append(json.load(f1))
-        with open('../levels/hard1.json', 'r') as f1:
+        with open('hard1.json', 'r') as f1:
                 temp_list.append(json.load(f1))
-        with open('../levels/medium1.json', 'r') as f1:
+        with open('medium1.json', 'r') as f1:
                 temp_list.append(json.load(f1))
-        with open('../levels/medium2.json', 'r') as f1:
+        with open('medium2.json', 'r') as f1:
                 temp_list.append(json.load(f1))
         return temp_list
 
@@ -36,9 +41,9 @@ If it does not, then the fuction
 will create a new one
 '''
 def check_level_directory():
-    games_directory_there = os.path.exists(GAMES_DIRECTORY)
+    games_directory_there = os.path.exists(HOME+GAMES_DIRECTORY)
     if games_directory_there == False:
-        os.mkdir(GAMES_DIRECTORY)
+        os.mkdir(HOME+GAMES_DIRECTORY)
 
 '''
 check if the level directory exist
@@ -46,7 +51,7 @@ if does not, it will return false
 otherwise true
 '''
 def check_directory():
-        return os.path.exists(LEVELS_DIRECTORY)
+        return os.path.exists(HOME+LEVELS_DIRECTORY)
 
 '''
 creates a file with the Games ID
@@ -58,7 +63,7 @@ def create_file():
         try:
                 global GAMES_ID
                 tempid = GAMES_ID
-                t = open(GAMES_DIRECTORY + "/" + str(GAMES_ID))
+                t = open(HOME + GAMES_DIRECTORY + "/" + str(GAMES_ID))
                 t.close()
                 GAMES_ID += 1
         except Exception as err:
@@ -72,9 +77,9 @@ deletes a file if the given
 file exists, else throws error
 '''
 def delete_file(index_number):
-    file_exists = os.path.exists(GAMES_DIRECTORY + "/" + index_number)
+    file_exists = os.path.exists(HOME + GAMES_DIRECTORY + "/" + index_number)
     if file_exists:
-        os.remove(GAMES_DIRECTORY + "/" + index_number,)
+        os.remove(HOME + GAMES_DIRECTORY + "/" + index_number,)
         return True
     raise FileNotFoundError(f'{index_number} does not exists')
     
@@ -82,4 +87,4 @@ def delete_file(index_number):
 use to tell if the current file exists
 '''
 def find_file(index_number):
-    return os.path.exists(GAMES_DIRECTORY + "/" + index_number)
+    return os.path.exists(HOME + GAMES_DIRECTORY + "/" + index_number)
