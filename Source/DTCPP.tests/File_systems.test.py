@@ -89,3 +89,11 @@ class File_systems_should (unittest.TestCase):
     ex
     '''
     def should_check_directory_false(self):
+        game_directory_there = os.path.exists('../Games')
+        if game_directory_there:
+            os.remove('../Games')
+        File_system.check_directory()
+        game_directory_there = os.path.exists('../Games')
+        if game_directory_there:
+            self.assertTrue(True)
+        self.fail('the games directory is not there')
