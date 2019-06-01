@@ -108,6 +108,13 @@ class File_systems_should (unittest.TestCase):
             self.assertTrue(True)
         else:
             self.fail('the games directory is not there')
+    
+    '''
+    just checks if the level directory
+    exists
+    '''
+    def test_should_check_level_directory_true(self):
+        self.assertTrue(check_levels_directory())
 
 if __name__ == "__main__":
     unittest.main()
