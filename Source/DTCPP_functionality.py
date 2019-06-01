@@ -56,8 +56,8 @@ def select_level(request):
     else:
         data = {'Reason': 'bad session id.'}
         message = Message_ids.ERROR
-    return PDU(message, response["session_id"],
-        response['version'],data)
+    return PDU(message, request["session_id"],
+        request['version'],data)
 
 
 '''
