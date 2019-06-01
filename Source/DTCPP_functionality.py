@@ -59,7 +59,6 @@ def select_level(request, levels):
         message = Message_ids.ERROR
     return PDU(message, request["session_id"],request['version'],data)
 
-
 '''
 ends the current game
 '''
