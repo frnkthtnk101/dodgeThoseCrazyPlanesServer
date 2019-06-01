@@ -114,7 +114,8 @@ class File_systems_should (unittest.TestCase):
     exists
     '''
     def test_should_check_level_directory_true(self):
-        self.assertTrue(check_levels_directory())
+        is_level_directory_here = check_levels_directory() 
+        self.assertTrue(is_level_directory_here)
 
     '''
     checks the gathers levels works correctly
@@ -128,9 +129,9 @@ class File_systems_should (unittest.TestCase):
         for record in templist:
             if record['Difficulty'] == 'easy':
                 easy += 1
-            elif record['Difficulty'] == 'medium':
+            if record['Difficulty'] == 'medium':
                 medium += 1
-            else record['Difficulty'] == 'hard':
+            if record['Difficulty'] == 'hard':
                 hard += 1
         easy_equals_three = easy == 3
         medium_equals_two = medium == 2

@@ -15,23 +15,23 @@ GAMES_DIRECTORY = '/Games'
 LEVELS_DIRECTORY = '/levels'
 GAMES_ID = 0
 sys.path.append(HOME+GAMES_DIRECTORY)
-sys.path.append(HOME+LEVELS_DIRECTORY)
+#sys.path.append(HOME+LEVELS_DIRECTORY)
 '''
 returns a list of levels
 '''
 def gather_levels():
         temp_list = []
-        with open('easy1.json', 'r') as f1:
+        with open( HOME + LEVELS_DIRECTORY + '/easy1.json', 'r') as f1:
                 temp_list.append(json.load(f1))
-        with open('easy2.json', 'r') as f1:
+        with open( HOME + LEVELS_DIRECTORY + '/easy2.json', 'r') as f1:
                 temp_list.append(json.load(f1))
-        with open('easy3.json', 'r') as f1:
+        with open( HOME + LEVELS_DIRECTORY + '/easy3.json', 'r') as f1:
                 temp_list.append(json.load(f1))
-        with open('hard1.json', 'r') as f1:
+        with open( HOME + LEVELS_DIRECTORY + '/hard1.json', 'r') as f1:
                 temp_list.append(json.load(f1))
-        with open('medium1.json', 'r') as f1:
+        with open( HOME + LEVELS_DIRECTORY + '/medium1.json', 'r') as f1:
                 temp_list.append(json.load(f1))
-        with open('medium2.json', 'r') as f1:
+        with open( HOME + LEVELS_DIRECTORY + '/medium2.json', 'r') as f1:
                 temp_list.append(json.load(f1))
         return temp_list
 

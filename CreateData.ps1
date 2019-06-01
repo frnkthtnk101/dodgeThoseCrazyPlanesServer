@@ -1,9 +1,5 @@
-$easy1 = @{
-    "Message" = 00001001;
-    "Session ID" = 1;
-    "Version" = 00001000;
-    "Data" = @{
-        "Diffculty" = "easy";
+$easy1 =  @{
+        "Difficulty" = "easy";
         "PlaneTypes" = ("downers");
         "CompleteAt" = 1000;
         "level" = (
@@ -45,10 +41,9 @@ $easy1 = @{
         )
     }
 
-}
 
 $easy2 = @{
-        "Diffculty" = "easy";
+        "Difficulty" = "easy";
         "PlaneTypes" = ("downers");
         "CompleteAt" = 500;
         "level" = (
@@ -84,7 +79,7 @@ $easy2 = @{
 
 
 $easy3 =  @{
-        "Diffculty" = "easy";
+        "Difficulty" = "easy";
         "PlaneTypes" = ("downers");
         "CompleteAt" = 650;
         "level" = (
@@ -120,7 +115,7 @@ $easy3 =  @{
     }
 
 $medium1 =  @{
-        "Diffculty" = "medium";
+        "Difficulty" = "medium";
         "PlaneTypes" = ("downers");
         "CompleteAt" = 650;
         "level" = (
@@ -156,7 +151,7 @@ $medium1 =  @{
     }
 
 $medium2 =  @{
-    "Diffculty" = "medium";
+    "Difficulty" = "medium";
     "PlaneTypes" = ("downers");
     "CompleteAt" = 500;
     "level" = (
@@ -190,7 +185,7 @@ $medium2 =  @{
 }
 
 $hard1 =  @{
-    "Diffculty" = "hard";
+    "Difficulty" = "hard";
     "PlaneTypes" = ("downers");
     "CompleteAt" = 500;
     "level" = (
