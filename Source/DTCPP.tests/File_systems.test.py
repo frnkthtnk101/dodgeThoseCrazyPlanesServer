@@ -69,10 +69,23 @@ class File_systems_should (unittest.TestCase):
         tempid_is_not_neg_one = tempid != -1
         data_is_none = data is None
         if tempid_is_not_neg_one or data_is_none:
-            assert.fail('the tempid was not -1 or the data was null')
+            self.fail('the tempid was not -1 or the data was null')
         self.assertFalse(created)
     
+    '''
+    checks if the games directory
+    exist. it should
+    ''''
     def should_check_directory_true(self):
-        return True
+        File_system.check_directory()
+        game_directory_there = os.path.exists('../Games')
+        if game_directory_there:
+            self.assertTrue(True)
+        self.fail('the games directory is not there')
+        
     
+    '''
+    checks if the games directory
+    ex
+    '''
     def should_check_directory_false(self):
