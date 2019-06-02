@@ -14,9 +14,9 @@ from File_system import *
 
 class DTCPP_functioanlity_should(unittest.TestCase):
     def setUp(self):
-        self.validate_good = {'Message' : Message_ids.INTIALIZE_GAME.value, 'SessionId': 1, 'Version' : bytes(56),'Data' : None}
+        self.validate_good = {'Message' : Message_ids.INTIALIZE_GAME.value, 'SessionId': 1, 'Version' : (56).to_bytes(1, byteorder='big'),'Data' : None}
         self.validate_bad = {'bad' : 'This is will produce a false'}
-        self.initialize_game = {'Message' : Message_ids.INTIALIZE_GAME.value, 'SessionId': 1, 'Version' : bytes(56), 'Data' : None}
+        self.initialize_game = {'Message' : Message_ids.INTIALIZE_GAME.value, 'SessionId': 1, 'Version' : (56).to_bytes(1, byteorder='big'), 'Data' : None}
         self.request_level = {'Message' : Message_ids.GET_LEVEL.value,
         'SessionId' : '-1',
         'Version' : bytes(89), 
@@ -26,7 +26,7 @@ class DTCPP_functioanlity_should(unittest.TestCase):
                 'PlaneTypes' : ['downers']
             }
         }
-        self.end_game = {'Message' : Message_ids.END_GAME.value, 'SessionId' : -1, 'Version' : bytes(56), 'Data' : None}
+        self.end_game = {'Message' : Message_ids.END_GAME.value, 'SessionId' : -1, 'Version' : (56).to_bytes(1, byteorder='big'), 'Data' : None}
     
     def test_validate_request_should_return_true(self):
         validate_good_is_good = validate_request(self.validate_good)
@@ -66,7 +66,7 @@ class DTCPP_functioanlity_should(unittest.TestCase):
         levels = gather_levels()
         request_level = {'Message' : Message_ids.GET_LEVEL,
         'SessionId' : 55,
-        'Version' : bytes(56), 
+        'Version' : (56).to_bytes(1, byteorder='big'), 
         'Data' : 
             {
                 'Difficulty' : 'easy',
