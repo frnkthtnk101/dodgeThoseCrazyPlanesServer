@@ -16,6 +16,15 @@ class DTCPP_functioanlity_should(unittest.TestCase):
         self.validate_good = {'Message' : Message_ids.INTIALIZE_GAME, 'SessionId': 1, 'Version' : bytes(56),'Data' : None}
         self.validate_bad = {'bad' : 'This is will produce a false'}
         self.initialize_game = {'Message' : Message_ids.INTIALIZE_GAME, 'SessionId': 1, 'Version' : bytes(56), 'Data' : None}
+        self.request_level = {'Message' : Message_ids.GET_LEVEL,
+        'SessionID' : '-1',
+        'Version' : bytes(89), 
+        'Data' : 
+            {
+                'Difficulty' : 'easy',
+                'PlaneTypes' : ['downers']
+            }
+        }
     
     def test_validate_request_should_return_true(self):
         validate_good_is_good = validate_request(self.validate_good)
@@ -42,16 +51,9 @@ class DTCPP_functioanlity_should(unittest.TestCase):
     def test_select_level_should_return_RECEIVE_LEVEL(self):
         levels = gather_levels()
         request_initialization = initialize_game(self.validate_good)
-        request_level = {'Message' : Message_ids.GET_LEVEL,
-        'SessionID' : request_initialization.session_id,
-        'Version' : request_initialization.version, 
-        'Data' : 
-            {
-                'Difficulty' : 'easy',
-                'PlaneTypes' : ['downers']
-            }
-        }
-        response = select_level(request_level, levels)
+        self.request_level['SessionID'] = request_initialization.session_id
+        self.request_level['Version'] = request_initialization.version, 
+        response = select_level(self.request_level, levels)
         same_level = request_level['Data']['Difficulty'] == response.data['Difficulty']
         same_planes = request_level['Data']['PlaneTypes'] == response.data['PlaneTypes']
         self.assertTrue(same_level)
@@ -74,7 +76,14 @@ class DTCPP_functioanlity_should(unittest.TestCase):
         self.assertTrue(gave_error)
     
     def test_select_level_should_return_ERROR_2(self):
-        raise Exception('not built yet')
+        levels = gather_levels()
+        request_initialization = initialize_game(self.validate_good)
+        self.request_level['SessionID'] = request_initialization.session_id
+        self.request_level['Version'] = request_initialization.version
+        self.request_level['Data']['Difficulty'] = 'beta'
+        response = select_level(self.request_level, levels)
+        gave_error = response.message == Message_ids.ERROR
+        self.assertTrue(gave_error)
     
     def test_end_game_should_return_OK(self):
         raise Exception('not built yet')
