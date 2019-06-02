@@ -79,11 +79,14 @@ will select a game based on the data
 given, else it will return error
 '''
 def generate_game(request_parameters, levels):
-    while True:
-        index = random.randrange(0,len(levels)-1)
-        same_level = request_parameters['Difficulty'] == levels[index]['Difficulty']
-        request_parameters['PlaneTypes'].sort()
-        levels[index]['PlaneTypes'].sort()
-        same_dudes = levels[index]['PlaneTypes'] == levels[index]['PlaneTypes']
-        if same_level and same_dudes:
-            return levels[index]
+    correct_difficulty =request_parameters['difficutly'] in ['easy', 'medium', 'hard']
+    if correct_difficulty:
+        while True:
+            index = random.randrange(0,len(levels)-1)
+            same_level = request_parameters['Difficulty'] == levels[index]['Difficulty']
+            request_parameters['PlaneTypes'].sort()
+            levels[index]['PlaneTypes'].sort()
+            same_dudes = levels[index]['PlaneTypes'] == levels[index]['PlaneTypes']
+            if same_level and same_dudes:
+                return True, levels[index]
+    return False, {"reason" : "invalid difficulty"}
