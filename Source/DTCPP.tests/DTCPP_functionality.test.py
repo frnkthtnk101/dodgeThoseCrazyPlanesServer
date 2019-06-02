@@ -98,7 +98,7 @@ class DTCPP_functioanlity_should(unittest.TestCase):
         self.end_game['SessionId'] = -1
         response = end_game(self.end_game)
         did_it_error_out = response.message == Message_ids.ERROR.value
-        self.assertTrue(did_it_end_game)
+        self.assertTrue(did_it_error_out)
 
 if __name__ == "__main__":
     unittest.main()
