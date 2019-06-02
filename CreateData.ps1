@@ -1,6 +1,6 @@
 $easy1 =  @{
         "Difficulty" = "easy";
-        "PlaneTypes" = ("downers");
+        "PlaneTypes" =[string[]]  "downers";
         "CompleteAt" = 1000;
         "level" = (
             @{"tick" = 10; "enemies" = "downers"; "number" =1},
@@ -44,7 +44,7 @@ $easy1 =  @{
 
 $easy2 = @{
         "Difficulty" = "easy";
-        "PlaneTypes" = ("downers");
+        "PlaneTypes" =[string[]]  "downers";
         "CompleteAt" = 500;
         "level" = (
             @{"tick" = 10; "enemies" = "downers"; "number" =1},
@@ -80,7 +80,7 @@ $easy2 = @{
 
 $easy3 =  @{
         "Difficulty" = "easy";
-        "PlaneTypes" = ("downers");
+        "PlaneTypes" =[string[]]  "downers";
         "CompleteAt" = 650;
         "level" = (
             @{"tick" = 10; "enemies" = "downers"; "number" =2},
@@ -116,7 +116,7 @@ $easy3 =  @{
 
 $medium1 =  @{
         "Difficulty" = "medium";
-        "PlaneTypes" = ("downers");
+        "PlaneTypes" =[string[]]  "downers";
         "CompleteAt" = 650;
         "level" = (
             @{"tick" = 10; "enemies" = "downers"; "number" =2},
@@ -152,7 +152,7 @@ $medium1 =  @{
 
 $medium2 =  @{
     "Difficulty" = "medium";
-    "PlaneTypes" = ("downers");
+    "PlaneTypes" =[string[]]  "downers";
     "CompleteAt" = 500;
     "level" = (
         @{"tick" = 10; "enemies" = "downers"; "number" =2},
@@ -186,7 +186,7 @@ $medium2 =  @{
 
 $hard1 =  @{
     "Difficulty" = "hard";
-    "PlaneTypes" = ("downers");
+    "PlaneTypes" =[string[]]  "downers";
     "CompleteAt" = 500;
     "level" = (
         @{"tick" = 10; "enemies" = "downers"; "number" =2},

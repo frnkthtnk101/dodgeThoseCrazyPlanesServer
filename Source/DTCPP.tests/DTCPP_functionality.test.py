@@ -56,8 +56,8 @@ class DTCPP_functioanlity_should(unittest.TestCase):
         self.request_level['SessionId'] = request_initialization.session_id
         self.request_level['Version'] = request_initialization.version, 
         response = select_level(self.request_level, levels)
-        same_level = request_level['Data']['Difficulty'] == response.data['Difficulty']
-        same_planes = request_level['Data']['PlaneTypes'] == response.data['PlaneTypes']
+        same_level = self.request_level['Data']['Difficulty'] == response.data['Difficulty']
+        same_planes = self.request_level['Data']['PlaneTypes'] == response.data['PlaneTypes']
         self.assertTrue(same_level)
         self.assertTrue(same_planes)
 

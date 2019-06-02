@@ -85,7 +85,7 @@ def generate_game(request_parameters, levels):
             index = random.randrange(0,len(levels)-1)
             same_level = request_parameters['Difficulty'] == levels[index]['Difficulty']
             request_parameters['PlaneTypes'].sort()
-            levels[index]['PlaneTypes'].sort()
+            #levels[index]['PlaneTypes']
             same_dudes = levels[index]['PlaneTypes'] == levels[index]['PlaneTypes']
             if same_level and same_dudes:
                 return True, levels[index]
