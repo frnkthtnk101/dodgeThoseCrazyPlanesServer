@@ -71,8 +71,8 @@ def end_game(request):
     else:
         data = {'Reason': 'bad session id.'}
         message = Message_ids.ERROR
-    return PDU(message, request['SessionId'],
-    request['version'], data)
+    tempPDU = PDU(message, request['SessionId'], request['version'], data)
+    return tempPDU
 
 '''
 will select a game based on the data
