@@ -47,7 +47,7 @@ selects a level on file
 returns a respone
 '''
 def select_level(request, levels):
-    valid_session_id = find_file(request["session_id"])
+    valid_session_id = find_file(request['SessionId'])
     if valid_session_id:
         worked, data = generate_game(request['data'], levels)
         if worked:
@@ -57,21 +57,21 @@ def select_level(request, levels):
     else:
         data = {'Reason': 'bad session id.'}
         message = Message_ids.ERROR
-    return PDU(message, request["session_id"],request['version'],data)
+    return PDU(message, request['SessionId'],request['version'],data)
 
 '''
 ends the current game
 '''
 def end_game(request):
-    valid_session_id = find_file(request["session_id"])
+    valid_session_id = find_file(request['SessionId'])
     if valid_session_id:
-        delete_file(request["session_id"])
+        delete_file(request['SessionId'])
         message = Message_ids.OK
         data = None
     else:
         data = {'Reason': 'bad session id.'}
         message = Message_ids.ERROR
-    return PDU(message, request["session_id"],
+    return PDU(message, request['SessionId'],
     request['version'], data)
 
 '''
