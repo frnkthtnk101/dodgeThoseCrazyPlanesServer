@@ -47,7 +47,7 @@ class DTCPP_functioanlity_should(unittest.TestCase):
             shutil.rmtree(HOME + GAMES_DIRECTORY)
         initialize_game_response = initialize_game(self.initialize_game)
         check_games_directory()
-        game_could_not_be_initialized = initialize_game_response.message == Message_ids.CANNOT_INITIALIZE_GAME
+        game_could_not_be_initialized = initialize_game_response.message == Message_ids.CANNOT_INITIALIZE_GAME.value
         self.assertTrue(game_could_not_be_initialized)
     
     def test_select_level_should_return_RECEIVE_LEVEL(self):
