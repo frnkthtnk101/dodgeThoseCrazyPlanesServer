@@ -27,7 +27,7 @@ if check_levels_directory():
     #set up the server
     server_running = True
     try:
-        HOST, PORT = '', 8080
+        HOST, PORT = '', 80
         listen_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         listen_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         #listen
@@ -48,34 +48,34 @@ if check_levels_directory():
             request_ok = validate_request(request)
             #at any of them it will session Id
             #at any of them it will return error
-            message = request['message']
+            message = request['Message']
             session_id = request['SessionId']
             logging.info(f'figuring out what to do with {message}')
             if request_ok:
                 #initialize game 
-                if bytes(request['message']) == Message_ids.INTIALIZE_GAME:
+                if bytes(request['Message']) == Message_ids.INTIALIZE_GAME:
                     #will send a cannot initialize game or
                     #Receive session ID/ Send Session ID
                     logging.info('intialize game')
                     response = initialize_game(request)
                 #get level
-                elif bytes(request['message']) == Message_ids.GET_LEVEL:
+                elif bytes(request['Message']) == Message_ids.GET_LEVEL:
                     #send a Receive level
                     logging.info('getting a level')
                     response = select_level(request, levels)
                 #bad level
-                elif bytes(request['message']) == Message_ids.BAD_LEVEL:
+                elif bytes(request['Message']) == Message_ids.BAD_LEVEL:
                     logging.warning(f'{client_address} received a bad level')
                     reason = request['Data']['reason']
                     logging.info(f'reasons why the level was bad {reason}')
                     response = select_level(request,levels)
                 #quit game
-                elif bytes(request['message']) == Message_ids.END_GAME:
+                elif bytes(request['Message']) == Message_ids.END_GAME:
                     #will send an OK
                     logging.info(f'{client_address} wants to end the game {session_id}')
                     response = end_game(request)
                 #end game
-                elif bytes(request['message']) == Message_ids.QUIT_GAME:
+                elif bytes(request['Message']) == Message_ids.QUIT_GAME:
                     #will send an OK
                     logging.info(f'{client_address} wants to end the game {session_id}')
                     response = end_game(request)
