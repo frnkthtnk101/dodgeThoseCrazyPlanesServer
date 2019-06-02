@@ -18,7 +18,7 @@ class DTCPP_functioanlity_should(unittest.TestCase):
         self.validate_bad = {'bad' : 'This is will produce a false'}
         self.initialize_game = {'Message' : Message_ids.INTIALIZE_GAME.value, 'SessionId': 1, 'Version' : bytes(56), 'Data' : None}
         self.request_level = {'Message' : Message_ids.GET_LEVEL.value,
-        'SessionID' : '-1',
+        'SessionId' : '-1',
         'Version' : bytes(89), 
         'Data' : 
             {
@@ -26,7 +26,7 @@ class DTCPP_functioanlity_should(unittest.TestCase):
                 'PlaneTypes' : ['downers']
             }
         }
-        self.end_game = {'Message' : Message_ids.END_GAME.value, 'SessionID' : -1, 'Version' : bytes(56), 'Data' : None}
+        self.end_game = {'Message' : Message_ids.END_GAME.value, 'SessionId' : -1, 'Version' : bytes(56), 'Data' : None}
     
     def test_validate_request_should_return_true(self):
         validate_good_is_good = validate_request(self.validate_good)
@@ -53,7 +53,7 @@ class DTCPP_functioanlity_should(unittest.TestCase):
     def test_select_level_should_return_RECEIVE_LEVEL(self):
         levels = gather_levels()
         request_initialization = initialize_game(self.validate_good)
-        self.request_level['SessionID'] = request_initialization.session_id
+        self.request_level['SessionId'] = request_initialization.session_id
         self.request_level['Version'] = request_initialization.version, 
         response = select_level(self.request_level, levels)
         same_level = request_level['Data']['Difficulty'] == response.data['Difficulty']
@@ -65,7 +65,7 @@ class DTCPP_functioanlity_should(unittest.TestCase):
     def test_select_level_should_return_ERROR(self):
         levels = gather_levels()
         request_level = {'Message' : Message_ids.GET_LEVEL,
-        'SessionID' : 55,
+        'SessionId' : 55,
         'Version' : bytes(56), 
         'Data' : 
             {
@@ -80,7 +80,7 @@ class DTCPP_functioanlity_should(unittest.TestCase):
     def test_select_level_should_return_ERROR_2(self):
         levels = gather_levels()
         request_initialization = initialize_game(self.validate_good)
-        self.request_level['SessionID'] = request_initialization.session_id
+        self.request_level['SessionId'] = request_initialization.session_id
         self.request_level['Version'] = request_initialization.version
         self.request_level['Data']['Difficulty'] = 'beta'
         response = select_level(self.request_level, levels)
