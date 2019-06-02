@@ -64,7 +64,7 @@ class DTCPP_functioanlity_should(unittest.TestCase):
     
     def test_select_level_should_return_ERROR(self):
         levels = gather_levels()
-        request_level = {'Message' : Message_ids.GET_LEVEL,
+        request_level = {'Message' : Message_ids.GET_LEVEL.value,
         'SessionId' : 55,
         'Version' : (56).to_bytes(1, byteorder='big'), 
         'Data' : 
@@ -74,7 +74,7 @@ class DTCPP_functioanlity_should(unittest.TestCase):
             }
         }
         response = select_level(request_level, levels)
-        gave_error = response.message == Message_ids.ERROR
+        gave_error = response.message == Message_ids.ERROR.value
         self.assertTrue(gave_error)
     
     def test_select_level_should_return_ERROR_2(self):
@@ -84,20 +84,20 @@ class DTCPP_functioanlity_should(unittest.TestCase):
         self.request_level['Version'] = request_initialization.version
         self.request_level['Data']['Difficulty'] = 'beta'
         response = select_level(self.request_level, levels)
-        gave_error = response.message == Message_ids.ERROR
+        gave_error = response.message == Message_ids.ERROR.value
         self.assertTrue(gave_error)
     
     def test_end_game_should_return_OK(self):
         request_initialization = initialize_game(self.validate_good)
         self.end_game['SessionId'] = request_initialization.session_id
         response = end_game(self.end_game)
-        did_it_end_game = response.message == Message_ids.OK
+        did_it_end_game = response.message == Message_ids.OK.value
         self.assertTrue(did_it_end_game)
     
     def test_end_should_return_ERROR(self):
         self.end_game['SessionId'] = -1
         response = end_game(self.end_game)
-        did_it_error_out = response.message == Message_ids.ERROR
+        did_it_error_out = response.message == Message_ids.ERROR.value
         self.assertTrue(did_it_end_game)
 
 if __name__ == "__main__":
