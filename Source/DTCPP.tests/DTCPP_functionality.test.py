@@ -4,6 +4,7 @@ tests the file DTCPP_functioanlity
 import unittest
 import os
 import shutil
+import sys
 sys.path.append('/Users/francopettigrosso/ws/dodgeThoseCrazyPlanesServer/Source')
 from DTCPP_functionality import *
 from Classes.PDU import PDU 
