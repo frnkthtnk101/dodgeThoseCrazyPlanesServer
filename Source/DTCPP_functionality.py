@@ -49,7 +49,7 @@ returns a respone
 def select_level(request, levels):
     valid_session_id = find_file(request['SessionId'])
     if valid_session_id:
-        worked, data = generate_game(request['data'], levels)
+        worked, data = generate_game(request['Data'], levels)
         if worked:
             message = Message_ids.RECEIVE_LEVEL
         else:
