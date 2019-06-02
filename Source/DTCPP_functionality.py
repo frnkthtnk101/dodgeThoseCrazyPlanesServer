@@ -79,7 +79,7 @@ will select a game based on the data
 given, else it will return error
 '''
 def generate_game(request_parameters, levels):
-    correct_difficulty =request_parameters['difficutly'] in ['easy', 'medium', 'hard']
+    correct_difficulty =request_parameters['Difficulty'] in ['easy', 'medium', 'hard']
     if correct_difficulty:
         while True:
             index = random.randrange(0,len(levels)-1)
