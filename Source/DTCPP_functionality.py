@@ -62,17 +62,17 @@ def select_level(request, levels):
 '''
 ends the current game
 '''
-def end_game(response):
-    valid_session_id = find_file(response["session_id"])
+def end_game(request):
+    valid_session_id = find_file(request["session_id"])
     if valid_session_id:
-        delete_file(response["session_id"])
+        delete_file(request["session_id"])
         message = Message_ids.OK
         data = None
     else:
         data = {'Reason': 'bad session id.'}
         message = Message_ids.ERROR
-    return PDU(message,response["session_id"],
-    response['version'], data)
+    return PDU(message, request["session_id"],
+    request['version'], data)
 
 '''
 will select a game based on the data
