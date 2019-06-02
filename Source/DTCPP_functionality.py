@@ -57,7 +57,7 @@ def select_level(request, levels):
     else:
         data = {'Reason': 'bad session id.'}
         message = Message_ids.ERROR
-    return PDU(message, request['SessionId'],request['version'],data)
+    return PDU(message, request['SessionId'],request['Version'],data)
 
 '''
 ends the current game
@@ -71,7 +71,7 @@ def end_game(request):
     else:
         data = {'Reason': 'bad session id.'}
         message = Message_ids.ERROR
-    tempPDU = PDU(message, request['SessionId'], request['version'], data)
+    tempPDU = PDU(message, request['SessionId'], request['Version'], data)
     return tempPDU
 
 '''
