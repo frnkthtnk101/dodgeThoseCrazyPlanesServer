@@ -39,7 +39,7 @@ def initialize_game(request):
         message = Message_ids.RECEIVE_SESSION_ID
     else:
         message = Message_ids.CANNOT_INITIALIZE_GAME
-    response = PDU(message,session_id,request['version'],data)
+    response = PDU(message,session_id,request['Version'],data)
     return response
 
 ''' 
