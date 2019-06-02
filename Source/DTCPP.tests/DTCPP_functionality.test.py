@@ -25,6 +25,7 @@ class DTCPP_functioanlity_should(unittest.TestCase):
                 'PlaneTypes' : ['downers']
             }
         }
+        self.end_game = {'Message' : Message_ids.END_GAME, 'SessionID' : -1, 'Version' : bytes(56), 'Data' : None}
     
     def test_validate_request_should_return_true(self):
         validate_good_is_good = validate_request(self.validate_good)
@@ -86,10 +87,17 @@ class DTCPP_functioanlity_should(unittest.TestCase):
         self.assertTrue(gave_error)
     
     def test_end_game_should_return_OK(self):
-        raise Exception('not built yet')
+        request_initialization = initialize_game(self.validate_good)
+        self.end_game['SessionId'] = request_initialization.session_id
+        response = end_game(self.end_game)
+        did_it_end_game = response.message == Message_ids.OK
+        self.assertTrue(did_it_end_game)
     
     def test_end_should_return_ERROR(self):
-        raise Exception('not built yet')
+        self.end_game['SessionId'] = -1
+        response = end_game(self.end_game)
+        did_it_error_out = response.message == Message_ids.ERROR
+        self.assertTrue(did_it_end_game)
 
 if __name__ == "__main__":
     unittest.main()
