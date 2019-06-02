@@ -38,7 +38,7 @@ class DTCPP_functioanlity_should(unittest.TestCase):
     
     def test_initialize_game_should_return_RECEIVE_SESSION_ID(self):
         initialize_game_response = initialize_game(self.initialize_game)
-        is_the_response_RECEIVED = initialize_game_response.message == Message_ids.RECEIVE_SESSION_ID
+        is_the_response_RECEIVED = initialize_game_response.message == Message_ids.RECEIVE_SESSION_ID.value
         self.assertTrue(is_the_response_RECEIVED)
 
     def test_initialize_game_should_return_CANNOT_INITIZE_GAME(self):
