@@ -77,9 +77,9 @@ deletes a file if the given
 file exists, else throws error
 '''
 def delete_file(index_number):
-    file_exists = os.path.exists(HOME + GAMES_DIRECTORY + "/" + index_number)
+    file_exists = os.path.exists(f'{HOME}{GAMES_DIRECTORY}/{str(index_number)}')
     if file_exists:
-        os.remove(HOME + GAMES_DIRECTORY + "/" + index_number,)
+        os.remove(f'{HOME}{GAMES_DIRECTORY}/{str(index_number)}')
         return True
     raise FileNotFoundError(f'{index_number} does not exists')
     
@@ -87,4 +87,4 @@ def delete_file(index_number):
 use to tell if the current file exists
 '''
 def find_file(index_number):
-    return os.path.exists(HOME + GAMES_DIRECTORY + "/" + index_number)
+    return os.path.exists(f'{HOME}{GAMES_DIRECTORY}/{str(index_number)}')
