@@ -38,7 +38,7 @@ class DTCPP_functioanlity_should(unittest.TestCase):
     
     def test_initialize_game_should_return_RECEIVE_SESSION_ID(self):
         initialize_game_response = initialize_game(self.initialize_game)
-        is_the_response_RECEIVED = initialize_game_response.message == Message_ids.RECEIVE_SESSION_ID.value
+        is_the_response_RECEIVED = initialize_game_response.Message == Message_ids.RECEIVE_SESSION_ID.value
         self.assertTrue(is_the_response_RECEIVED)
 
     def test_initialize_game_should_return_CANNOT_INITIZE_GAME(self):
@@ -47,17 +47,17 @@ class DTCPP_functioanlity_should(unittest.TestCase):
             shutil.rmtree(HOME + GAMES_DIRECTORY)
         initialize_game_response = initialize_game(self.initialize_game)
         check_games_directory()
-        game_could_not_be_initialized = initialize_game_response.message == Message_ids.CANNOT_INITIALIZE_GAME.value
+        game_could_not_be_initialized = initialize_game_response.Message == Message_ids.CANNOT_INITIALIZE_GAME.value
         self.assertTrue(game_could_not_be_initialized)
     
     def test_select_level_should_return_RECEIVE_LEVEL(self):
         levels = gather_levels()
         request_initialization = initialize_game(self.validate_good)
-        self.request_level['SessionId'] = request_initialization.session_id
-        self.request_level['Version'] = request_initialization.version, 
+        self.request_level['SessionId'] = request_initialization.SessionId
+        self.request_level['Version'] = request_initialization.Version, 
         response = select_level(self.request_level, levels)
-        same_level = self.request_level['Data']['Difficulty'] == response.data['Difficulty']
-        same_planes = self.request_level['Data']['PlaneTypes'] == response.data['PlaneTypes']
+        same_level = self.request_level['Data']['Difficulty'] == response.Data['Difficulty']
+        same_planes = self.request_level['Data']['PlaneTypes'] == response.Data['PlaneTypes']
         self.assertTrue(same_level)
         self.assertTrue(same_planes)
 
@@ -74,30 +74,30 @@ class DTCPP_functioanlity_should(unittest.TestCase):
             }
         }
         response = select_level(request_level, levels)
-        gave_error = response.message == Message_ids.ERROR.value
+        gave_error = response.Message == Message_ids.ERROR.value
         self.assertTrue(gave_error)
     
     def test_select_level_should_return_ERROR_2(self):
         levels = gather_levels()
         request_initialization = initialize_game(self.validate_good)
-        self.request_level['SessionId'] = request_initialization.session_id
-        self.request_level['Version'] = request_initialization.version
+        self.request_level['SessionId'] = request_initialization.SessionId
+        self.request_level['Version'] = request_initialization.Version
         self.request_level['Data']['Difficulty'] = 'beta'
         response = select_level(self.request_level, levels)
-        gave_error = response.message == Message_ids.ERROR.value
+        gave_error = response.Message == Message_ids.ERROR.value
         self.assertTrue(gave_error)
     
     def test_end_game_should_return_OK(self):
         request_initialization = initialize_game(self.validate_good)
-        self.end_game['SessionId'] = request_initialization.session_id
+        self.end_game['SessionId'] = request_initialization.SessionId
         response = end_game(self.end_game)
-        did_it_end_game = response.message == Message_ids.OK.value
+        did_it_end_game = response.Message == Message_ids.OK.value
         self.assertTrue(did_it_end_game)
     
     def test_end_should_return_ERROR(self):
         self.end_game['SessionId'] = -1
         response = end_game(self.end_game)
-        did_it_error_out = response.message == Message_ids.ERROR.value
+        did_it_error_out = response.Message == Message_ids.ERROR.value
         self.assertTrue(did_it_error_out)
 
 if __name__ == "__main__":
