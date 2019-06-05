@@ -1,5 +1,15 @@
+'''
+Message_ids.py
+used to keep track of
+what message is being sent
+'''
 from enum import Enum
 
+'''
+to prevent anything shady
+or any accidents made an enum
+helps prevent fuzzing.
+'''
 class Message_ids(Enum):
     INTIALIZE_GAME = 0
     CANNOT_INITIALIZE_GAME = 1

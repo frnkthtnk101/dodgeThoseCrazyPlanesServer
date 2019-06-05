@@ -85,6 +85,7 @@ def delete_file(index_number):
     
 '''
 use to tell if the current file exists
+Stateful
 '''
 def find_file(index_number):
     return os.path.exists(f'{HOME}{GAMES_DIRECTORY}/{str(index_number)}')

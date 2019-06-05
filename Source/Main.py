@@ -41,12 +41,14 @@ if check_levels_directory():
         print('Dodge those crazy planes server Initialized')
         logging.info('Dodge those crazy planes server Initialized')
         #figure out what to do
+        #stateful 44 - 91
         while True:
             client_connection, client_address = listen_socket.accept()
             logging.info(f'and connection from {client_address} received.')
             information = client_connection.recv(4096)
             information_decoded = information.decode()
             request = json.loads(information_decoded)
+            #stateful and fuzzing
             request_ok = validate_request(request)
             #at any of them it will session Id
             #at any of them it will return error
@@ -82,6 +84,7 @@ if check_levels_directory():
                     logging.info(f'{client_address} wants to end the game {session_id}')
                     response = end_game(request)
                 else:
+                    #FUZZING
                     response = PDU(Message_ids.ERROR, request['SessionId'], request['Version'], {'Reason' : 'Invalid Request'} )
             logging.info(f'sending a response to {client_address}')
             response_json = json.dumps(response.__dict__)

@@ -16,6 +16,7 @@ pdu = ['Message','SessionId','Version','Data']
 validates that the Json meets the PDU
 Standard.
 return a bool statement
+Statefullness fuzzing
 '''
 def validate_request(response):
     keys = response.keys()
@@ -32,6 +33,7 @@ initializes the game
 returns a response
 can send a Receive session id and
 Cannot initialize game
+Stateful
 '''
 def initialize_game(request):
     created, session_id, data = create_file()
@@ -45,6 +47,7 @@ def initialize_game(request):
 ''' 
 selects a level on file
 returns a respone
+Stateful
 '''
 def select_level(request, levels):
     valid_session_id = find_file(request['SessionId'])
@@ -61,6 +64,7 @@ def select_level(request, levels):
 
 '''
 ends the current game
+Stateful
 '''
 def end_game(request):
     valid_session_id = find_file(request['SessionId'])
