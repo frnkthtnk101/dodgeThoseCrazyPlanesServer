@@ -2,7 +2,8 @@ import unittest
 import os
 import sys
 import shutil
-sys.path.append('/Users/francopettigrosso/ws/dodgeThoseCrazyPlanesServer/Source')
+#this needs to be hardcoded because the test needs to know where the other files are at
+sys.path.append('C:\\Users\\Franco\\dodgeThoseCrazyPlanesServer\\Source')
 import Classes.Message_ids
 import Classes.PDU
 from File_system import *

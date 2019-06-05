@@ -5,7 +5,8 @@ import unittest
 import os
 import shutil
 import sys
-sys.path.append('/Users/francopettigrosso/ws/dodgeThoseCrazyPlanesServer/Source')
+#this needs to be hardcoded because the test needs to know where the other files are at
+sys.path.append('C:\\Users\\Franco\dodgeThoseCrazyPlanesServer\Source')
 from DTCPP_functionality import *
 from Classes.PDU import PDU 
 from Classes.Message_ids import Message_ids

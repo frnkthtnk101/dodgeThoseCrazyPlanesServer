@@ -220,6 +220,7 @@ $hard1 =  @{
 New-Item $Home/Games -ItemType Directory -Force
 New-Item $Home/levels -ItemType Directory -Force
 $destination = $HOME+"/levels"
+$PSDefaultParameterValues['Out-File:Encoding'] = 'utf8'
 $easy1 | ConvertTo-Json -Depth 25 > "$destination/easy1.json"
 $easy2 | ConvertTo-Json -Depth 25 > "$destination/easy2.json"
 $easy3 | ConvertTo-Json -Depth 25 > "$destination/easy3.json"

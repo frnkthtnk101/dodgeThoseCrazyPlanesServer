@@ -87,4 +87,6 @@ if check_levels_directory():
             response_json = json.dumps(response.__dict__)
             response_json_encode = str.encode(response_json)
             client_connection.sendall(response_json_encode)
-            client_connection.close() 
+            client_connection.close()
+else:
+    print('the games directory not here')
